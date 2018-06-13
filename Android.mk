@@ -38,8 +38,11 @@ LOCAL_STATIC_JAVA_AAR_LIBRARIES := \
     android-support-transition-gallery
 
 LOCAL_PACKAGE_NAME := Gallery2
-LOCAL_PRIVILEGED_MODULE := true
 LOCAL_CERTIFICATE := platform
+
+ifeq ($(filter true, $(DEVICE_HAS_UNPRIVILEGED_GALLERY)),)
+LOCAL_PRIVILEGED_MODULE := true
+endif
 
 LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D
 
